@@ -1,11 +1,15 @@
-import Heading from "@/components/ui/heading";
-import Image from "next/image";
+import Clients from "@/components/sections/Clients";
+import ClientSuccessSection from "@/components/sections/ClientSuccessSection";
+import HeroImages from "@/components/sections/HeroImages";
+import Home from "@/components/sections/Home"; // ✅ default import
 
-export default function Home() {
+export default function HomePage() {
   return (
-   <>
-   <h1>hello</h1>
-   <Heading level={1}>Welcome to Maven Advert</Heading>
-   </>
+    <>
+      <Home />
+      <HeroImages/>
+      <Clients/>
+      <ClientSuccessSection/>
+    </>
   );
 }
