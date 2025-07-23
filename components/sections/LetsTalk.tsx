@@ -1,0 +1,43 @@
+'use client';
+
+import React, { useRef, useEffect } from 'react';
+import gsap from 'gsap';
+
+const LetsTalk = () => {
+  const marqueeRef = useRef<HTMLDivElement | null>(null);
+
+  useEffect(() => {
+    const marqueeElement = marqueeRef.current;
+    if (!marqueeElement) return;
+
+    const textWidth = marqueeElement.scrollWidth;
+    const containerWidth = marqueeElement.clientWidth;
+
+    // GSAP infinite scroll animation
+    gsap.to(marqueeElement, {
+      x: `-${textWidth / 2}`,
+      duration: 40,
+      ease: 'linear',
+      repeat: -1,
+    });
+  }, []);
+
+  return (
+    <div className="w-full bg-lime-200 overflow-hidden py-6">
+      <div className="relative w-full">
+        <div
+          className="flex whitespace-nowrap text-black font-extrabold text-4xl lg:text-8xl uppercase tracking-widest gap-20"
+          ref={marqueeRef}
+        >
+          {Array(20)
+            .fill("LET'S TALK")
+            .map((text, i) => (
+              <span key={i}>{text}</span>
+            ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default LetsTalk;

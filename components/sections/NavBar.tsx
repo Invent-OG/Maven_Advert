@@ -47,26 +47,25 @@ export default function NavBar() {
       {/* Top Navbar */}
       <div
         ref={navRef}
-        className="fixed top-0 left-0 w-full z-50 flex justify-between items-center px-16 pr-20 py-5 bg-black text-white transition-transform duration-500"
+        className="fixed rounded-4xl top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-16 py-4 md:py-5  backdrop-blur-md text-white transition-transform duration-500"
       >
-        <div className="text-2xl  font-bold">maven advert</div>
-        <div className="flex items-center gap-12">
-          <button className="text-sm pb-[1px] border-b-2 border-transparent hover:border-red-600 transition-all duration-300">
-  Let's Talk
-</button>
-
+        <div className="text-xl md:text-2xl font-bold">maven advert</div>
+        <div className="flex items-center gap-6 md:gap-12">
+          <button className="text-sm md:text-base pb-[1px] border-b-2 border-transparent hover:border-red-600 transition-all duration-300 hidden md:block">
+            Let's Talk
+          </button>
           <button onClick={toggleMenu} aria-label="Toggle Menu">
-            {menuOpen ? <X size={28} /> : <Menu size={28} />}
+            {menuOpen ? <X size={26} className="text-black" /> : <Menu size={26} />}
           </button>
         </div>
       </div>
 
-      {/* Full-screen Menu */}
+      {/* Full-screen Mobile Menu */}
       <div
         ref={menuRef}
         className="fixed top-0 left-0 w-full h-screen bg-white text-black z-40 flex justify-center items-center transform -translate-y-full"
       >
-        <nav className="flex items-center  gap-10 text-2xl font-semibold">
+        <nav className="flex flex-col items-center gap-8 text-xl font-semibold md:text-2xl md:flex-row">
           <Link href="#services" onClick={() => setMenuOpen(false)}>
             Our Services
           </Link>

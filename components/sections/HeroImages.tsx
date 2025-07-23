@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
@@ -49,8 +49,18 @@ const heroImages = [
 export default function HeroImages() {
   const containerRef = useRef<HTMLDivElement>(null);
   const sliderRef = useRef<HTMLDivElement>(null);
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+
+    if (window.innerWidth < 768) return; // Skip GSAP on mobile
+
     const ctx = gsap.context(() => {
       const totalWidth = (sliderRef.current?.scrollWidth || 0) - window.innerWidth;
 
@@ -68,7 +78,11 @@ export default function HeroImages() {
       });
     }, containerRef);
 
-    return () => ctx.revert();
+    return () => {
+      window.removeEventListener('resize', handleResize);
+      gsap.killTweensOf(sliderRef.current);
+      ScrollTrigger.getAll().forEach(trigger => trigger.kill());
+    };
   }, []);
 
   return (
@@ -84,49 +98,82 @@ export default function HeroImages() {
         </p>
       </div>
 
-      {/* Horizontal Scroll Section */}
-      <section
-        ref={containerRef}
-        className="relative w-full min-h-screen overflow-hidden mt-20 flex items-center"
-      >
-        <div ref={sliderRef} className="flex gap-6 md:gap-10 px-6 md:px-20">
+      {/* Desktop/Tablet Horizontal Scroll */}
+      {!isMobile && (
+        <section
+          ref={containerRef}
+          className="relative w-full min-h-screen overflow-hidden mt-20 flex items-center"
+        >
+          <div ref={sliderRef} className="flex gap-6 md:gap-10 px-6 md:px-20">
+            {heroImages.map((img, index) => (
+              <div
+                key={index}
+                className="panel relative h-[300px] w-[280px] md:h-[500px] md:w-[500px] flex-shrink-0 rounded-xl overflow-hidden bg-neutral-700 shadow-lg group"
+              >
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                />
+                {/* Bottom-left Tags */}
+                <div className="absolute bottom-4 left-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                  {img.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs md:text-sm bg-white/10 text-white px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+            {/* Spacer */}
+            <div className="flex-shrink-0" style={{ width: '60vw' }} />
+          </div>
+        </section>
+      )}
+
+      {/* Mobile Vertical One-by-One Layout */}
+      {isMobile && (
+        <section className="px-6 mt-12 space-y-8">
           {heroImages.map((img, index) => (
             <div
               key={index}
-              className="panel relative h-[300px] w-[280px] md:h-[500px] md:w-[500px] flex-shrink-0 rounded-xl overflow-hidden bg-neutral-700 shadow-lg group"
+              className="relative h-[400px] w-full rounded-xl overflow-hidden bg-neutral-700 shadow-md"
             >
               <Image
                 src={img.src}
                 alt={img.alt}
                 fill
-                className="object-cover transition-transform duration-500 ease-in-out group-hover:scale-110"
+                className="object-cover transition-transform duration-500 ease-in-out"
               />
-              {/* Bottom-left Tags on Hover */}
-              <div className="absolute bottom-4 left-4 z-20 flex gap-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                {img.tags.map((tag, i) => (
-                  <span
-                    key={i}
-                    className="text-xs md:text-sm bg-white/10 text-white px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm"
-                  >
-                    {tag}
-                  </span>
-                ))}
+              <div className="absolute inset-0 bg-black/40 p-4 flex flex-col justify-end">
+                {/* <h2 className="text-lg font-semibold mb-2">{img.title}</h2> */}
+                <div className="flex gap-2 flex-wrap">
+                  {img.tags.map((tag, i) => (
+                    <span
+                      key={i}
+                      className="text-xs bg-white/10 text-white px-3 py-1 rounded-full border border-white/30 backdrop-blur-sm"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
               </div>
             </div>
           ))}
-
-          {/* Spacer to finish scroll */}
-          <div className="flex-shrink-0" style={{ width: '60vw' }} />
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* How Section */}
-      <section className="bg-neutral-900 flex flex-col justify-end items-end text-white h-[30vh] px-6 md:px-20 py-32">
-  <h1 className="text-4xl md:text-8xl font-bold mb-4">How?</h1>
-  <p className="text-lg md:text-xl text-neutral-400 max-w-2xl">
-    This is how we do it.
-  </p>
-</section>
+      {/* <section className="bg-neutral-900 flex flex-col justify-end items-end text-white h-[30vh] px-6 md:px-20 py-32">
+        <h1 className="text-4xl md:text-8xl font-bold mb-4">How?</h1>
+        <p className="text-lg md:text-xl text-neutral-400 max-w-2xl">
+          This is how we do it.
+        </p>
+      </section> */}
     </div>
   );
 }
