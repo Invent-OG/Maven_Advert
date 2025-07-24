@@ -116,61 +116,52 @@ export default function CTASection() {
 
   useEffect(() => {
     const ctx = gsap.context(() => {
-      ScrollTrigger.refresh(); // ensures proper layout on mobile resize
+      ScrollTrigger.refresh();
 
-      // Pin the section
       ScrollTrigger.create({
         trigger: sectionRef.current,
         start: 'top top',
-        end: '+=100%',
+        end: '+=80%',
         pin: true,
         pinSpacing: true,
         scrub: true,
       });
 
-      const isMobile = window.innerWidth <= 768;
+      const startOffset = 15; // Control how soon animation starts
+      const endOffset = 5; // Control how long each letter stays in animation
 
       letterRefs.current.forEach((el, i) => {
-        const triggerSettings = isMobile
-          ? {
-              trigger: textRef.current,
-              start: 'top 80%',
-              end: 'top 40%',
-              scrub: true,
-            }
-          : {
-              trigger: el,
-              start: `top+=${i * 10}px center`,
-              end: 'top 50%',
-              scrub: true,
-            };
-
         gsap.fromTo(
           el,
           { color: '#D1D5DB' },
           {
             color: '#000000',
-            scrollTrigger: triggerSettings,
+            scrollTrigger: {
+              trigger: el,
+              start: `top+=${i * startOffset}px center`,
+              end: `top+=${i * startOffset + endOffset}px center`,
+              scrub: true,
+            },
           }
         );
       });
 
-      // Button fade-up animation
-    //   gsap.fromTo(
-    //     buttonRef.current,
-    //     { opacity: 0, y: 80 },
-    //     {
-    //       opacity: 1,
-    //       y: 0,
-    //       duration: 0.5,
-    //       delay: 0.2,
-    //       ease: 'power3.out',
-    //       scrollTrigger: {
-    //         trigger: sectionRef.current,
-    //         start: 'top 60%',
-    //       },
-    //     }
-    //   );
+      // Uncomment below if you want the button animation
+      // gsap.fromTo(
+      //   buttonRef.current,
+      //   { opacity: 0, y: 80 },
+      //   {
+      //     opacity: 1,
+      //     y: 0,
+      //     duration: 0.5,
+      //     delay: 0.2,
+      //     ease: 'power3.out',
+      //     scrollTrigger: {
+      //       trigger: sectionRef.current,
+      //       start: 'top 60%',
+      //     },
+      //   }
+      // );
     }, sectionRef);
 
     return () => ctx.revert();
@@ -209,3 +200,4 @@ export default function CTASection() {
     </section>
   );
 }
+

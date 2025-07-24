@@ -52,7 +52,7 @@ export default function WhyChooseUs() {
   return (
     <section
       ref={sectionRef}
-      className="min-h-screen  text-black transition-colors duration-700 ease-in-out px-6 md:px-20 py-24"
+      className="min-h-screen text-black transition-colors duration-100 ease-in-out px-6 md:px-20 py-24"
     >
         <p className='py-4'>✦ Tell your story through web design.</p>
       <h2 className="text-4xl md:text-6xl font-extrabold text-start mb-20 flex items-start justify-start gap-4">

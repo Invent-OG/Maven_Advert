@@ -518,7 +518,7 @@ export default function ClientCardsSection() {
               }}
               className="h-screen flex items-center justify-center px-2"
             >
-              <div className="relative bg-neutral-900 text-white p-6 md:p-10 rounded-xl border border-lime-400 shadow-[0_0_60px_#84cc16] ring-1 ring-lime-200 max-w-xl w-full mx-auto">
+              <div className="relative bg-neutral-900 text-white p-6 md:p-10 rounded-xl border border-lime-200 shadow-[0_0_30px_#bef264] ring-0 ring-lime-100 max-w-xl w-full mx-auto">
                 {/* Top Icon */}
                 <div
                   ref={(el) => {
