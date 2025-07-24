@@ -15,11 +15,11 @@ export default function WhyChooseUs() {
         gsap.to(sectionRef.current, {
           backgroundColor: '#000000',
           color: '#ffffff',
-          duration: 0.5,
+          duration: 5,
           ease: 'power2.out',
           scrollTrigger: {
             trigger: sectionRef.current,
-            start: 'top 90%',
+            start: 'top 10%',
             end: 'center center',
             toggleActions: 'play reverse play reverse',
             scrub: true,
