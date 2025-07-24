@@ -89,6 +89,7 @@ import { useEffect, useRef, useState } from "react";
 import gsap from "gsap";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import { useRouter } from "next/navigation";
 
 export default function NavBar() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -97,6 +98,7 @@ export default function NavBar() {
   const lastScrollY = useRef(0);
 
   const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const router = useRouter()
 
   // Lock body scroll when menu is open
   useEffect(() => {
@@ -147,7 +149,7 @@ export default function NavBar() {
         ref={navRef}
         className="fixed rounded-4xl top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-16 py-4 md:py-5 backdrop-blur-md text-white transition-transform duration-500"
       >
-        <div className="text-xl md:text-2xl font-bold">maven advert</div>
+        <div onClick={()=>router.push('/')} className="cursor-pointer text-xl md:text-2xl font-bold">maven advert</div>
         <div className="flex items-center gap-6 md:gap-12">
           <button className="text-sm md:text-base pb-[1px] border-b-2 border-transparent hover:border-red-600 transition-all duration-300 hidden md:block">
             Let's Talk
@@ -164,19 +166,20 @@ export default function NavBar() {
         className="fixed top-0 left-0 w-full h-screen bg-white text-black z-40 flex justify-center items-center transform -translate-y-full"
       >
         <nav className="flex flex-col items-center gap-8 text-xl font-semibold md:text-2xl md:flex-row">
-          <Link href="#services" onClick={() => setMenuOpen(false)}>
-            Our Services
-          </Link>
-          <Link href="#projects" onClick={() => setMenuOpen(false)}>
-            Project Gallery
-          </Link>
-          <Link href="#about" onClick={() => setMenuOpen(false)}>
-            Learn About Us
-          </Link>
-          <Link href="#work" onClick={() => setMenuOpen(false)}>
-            Work With Us
-          </Link>
-        </nav>
+  <Link href="/service" onClick={() => setMenuOpen(false)}>
+    Our Services
+  </Link>
+  <Link href="/gallery" onClick={() => setMenuOpen(false)}>
+    Project Gallery
+  </Link>
+  <Link href="/aboutus" onClick={() => setMenuOpen(false)}>
+    Learn About Us
+  </Link>
+  <Link href="/contact" onClick={() => setMenuOpen(false)}>
+    Work With Us
+  </Link>
+</nav>
+
       </div>
     </>
   );

@@ -3,7 +3,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 
-const LetsTalk = () => {
+const SecondOne = () => {
   const marqueeRef = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
@@ -40,4 +40,4 @@ const LetsTalk = () => {
   );
 };
 
-export default LetsTalk;
+export default SecondOne;
