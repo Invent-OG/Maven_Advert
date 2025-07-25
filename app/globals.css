@@ -119,3 +119,11 @@
   }
 }
 
+/* styles/globals.css */
+body {
+  background-color: #000000;
+  color: #ffffff;
+  transition: background-color 1s ease, color 1s ease;
+}
+
+
