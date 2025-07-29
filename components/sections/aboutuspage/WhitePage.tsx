@@ -209,7 +209,7 @@ export default function WhitePage() {
   return (
     <section
       ref={whiteSectionRef}
-      className="md:min-h-[140vh]  min-h-[60vh] flex flex-col items-center px-4 md:py-20 py-24"
+      className="md:min-h-[140vh] sticky top-0  min-h-[60vh] flex flex-col items-center px-4 md:py-20 py-24"
     >
       {/* Animated Heading */}
       <div
