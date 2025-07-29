@@ -1,4 +1,6 @@
 import BrandingSection from '@/components/sections/servicepage/BrandingSection'
+import ProcessTimeline from '@/components/sections/servicepage/ProcessTimeline'
+import ServiceLetsTalk from '@/components/sections/servicepage/ServiceLetsTalk'
 import ServicesHero from '@/components/sections/servicepage/ServicesHero'
 import ServicesImages from '@/components/sections/servicepage/ServicesImages'
 import ServicesSection from '@/components/sections/servicepage/ServicesSection'
@@ -17,6 +19,8 @@ function page() {
       <WebDesignSplitSection/>
       <ServicesWhitePage/>
       {/* <BrandingSection/> */}
+      <ProcessTimeline/>
+      <ServiceLetsTalk/>
     </div>
   )
 }

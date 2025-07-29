@@ -9,12 +9,12 @@ export default function BrandingSection() {
 
         {/* Left side */}
         <div>
-          <p className="text-sm text-gray-400 mb-2">✨ Elevate your brand aesthetics</p>
-          <h2 className="text-4xl md:text-5xl font-extrabold leading-tight mb-6">
+          <p className="text-sm text-black mb-2">✨ Elevate your brand aesthetics</p>
+          <h2 className="text-4xl text-neutral-400 md:text-5xl font-extrabold leading-tight mb-6">
             Branding That <br /> Resonates With Your <br /> Audience
           </h2>
 
-          <div className="mt-8 h-[600px] relative">
+          <div className="mt-8 h-[800px] relative">
             <Image
               src="/assets/services/6761a73d1744ec34556609b4_2-iPhones-Rock reduced.avif"
               alt="Phones with branding"
@@ -36,11 +36,11 @@ export default function BrandingSection() {
             />
           </div>
 
-          <p className="text-gray-300 mb-6">
+          <p className="text-gray-300 py-8">
             Great branding is unforgettable, and we make sure your brand’s essence is visible across all touchpoints. We craft trends that connect, stand out, and form a lasting impression. Whether you're a leading influencer or building a new venture, we’re branding services ready to match your bold with beauty.
           </p>
 
-          <button className="px-6 py-2 border border-white rounded-full w-max hover:bg-white hover:text-black transition">
+          <button className="px-6 py-2  border border-neutral-400 rounded-full w-max hover:bg-white hover:text-black transition">
             View Gallery
           </button>
         </div>
