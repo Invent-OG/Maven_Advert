@@ -1,9 +1,11 @@
-import React from 'react';
+import Spline from '@splinetool/react-spline';
 
 export default function Home() {
   return (
-    <div className="h-screen w-full flex items-center justify-center bg-black">
-      <h1 className="text-6xl font-bold text-white">Maven</h1>
-    </div>
+    <main>
+      <Spline
+        scene="https://prod.spline.design/HWnmevWuj3p1HU0Y/scene.splinecode" 
+      />
+    </main>
   );
 }
