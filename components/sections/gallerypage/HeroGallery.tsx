@@ -20,7 +20,7 @@ export default function HeroGallery() {
       <div className="w-full flex justify-center items-center overflow-hidden bg-[#171817]">
         <div className="w-full max-w-7xl h-full">
           <Image
-            src="/assets/gallery/6761a73d1744ec34556609b4_2-iPhones-Rock reduced.avif"
+            src="/assets/gallery/1.avif"
             alt="Project Showcase Image"
             width={1920}
             height={1080}
