@@ -125,7 +125,7 @@ export default function WhitePage() {
         </p>
       </div>
     </section>
-        <section className="relative  min-h-screen flex flex-col items-center justify-center bg-[#171817] px-4 text-center z-20">
+        <section className="relative min-h-screen flex flex-col items-center justify-center bg-[#171817] px-4 text-center z-20">
         <AnimatedHeading
           text="Let's Talk"
           fromColor="#4e4e4e"
@@ -139,31 +139,3 @@ export default function WhitePage() {
     </div>
   );
 }
-// 'use client';
-
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-// import AnimatedHeading from '../AnimatedHeading';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function WhitePage() {
-
-
-
-
-
-//   return (
-//     <section className="relative -mt-10 md:-mt-20 min-h-screen flex flex-col items-center justify-center bg-white px-4 text-center z-20">
-//         <AnimatedHeading
-//           text="Let's Get Started"
-//           fromColor="#d4d4d8"
-//           toColor="#4e4e4e"
-//           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
-//         />
-//         <button className="text-black rounded-3xl border border-lime-200 px-6 py-2 font-medium shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
-//           Book A Call
-//         </button>
-//       </section>
-//   );
-// }

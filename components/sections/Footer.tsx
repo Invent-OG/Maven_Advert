@@ -267,7 +267,7 @@ export default function Footer() {
           ></span>
         </p>
 
-        <nav className="flex flex-col sm:flex-row md:gap-4 gap-10 sm:gap-10 text-neutral-400 text-2xl md:text-2xl font-bold">
+        <nav className="flex flex-col sm:flex-row md:gap-6 gap-10 sm:gap-10 text-neutral-400 text-2xl md:text-2xl font-bold">
           {navLinks.map((item, index) => (
             <div
               key={index}

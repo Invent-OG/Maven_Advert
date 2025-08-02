@@ -161,17 +161,21 @@ export default function NavBar() {
   return (
     <>
       {/* Top Navbar */}
-      <div
+      {/* <div
         ref={navRef}
-        className="fixed rounded-4xl top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-16 py-4 md:py-5 backdrop-blur-md text-white transition-transform duration-500"
-      >
+        className="fixed rounded-4xl top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-16  py-4 md:py-5 backdrop-blur-3xl text-white transition-transform duration-500"
+      > */}
+            <div
+  ref={navRef}
+  className="fixed rounded-4xl top-0 left-0 w-full z-50 flex justify-between items-center px-6 md:px-16 py-4 md:py-5 bg-black/20 backdrop-blur text-white transition-transform duration-500"
+>
         <div
           onClick={() => router.push("/")}
-          className="cursor-pointer text-xl md:text-2xl font-bold"
+          className="cursor-pointer text-xl md:text-2xl font-bold text-white"
         >
           maven advert
         </div>
-        <div className="flex items-center gap-6 md:gap-12">
+        <div className="flex items-center gap-6 md:gap-12 ">
           {/* <button className="text-sm md:text-base pb-[1px] border-b-2 border-transparent hover:border-white/50 transition-all duration-300 hidden md:block">
             Let's Talk
           </button> */}
@@ -193,7 +197,7 @@ export default function NavBar() {
       {/* Full-screen Mobile Menu */}
       <div
         ref={menuRef}
-        className="fixed top-0 left-0 w-full h-screen bg-white text-neutral-800 z-40 flex justify-center items-center transform -translate-y-full"
+        className="fixed top-0 left-0 w-full h-screen bg-white  text-neutral-800 z-40 flex justify-center items-center transform -translate-y-full"
       >
         <nav className="flex flex-col items-center gap-8 text-xl font-bold md:text-3xl md:flex-row">
           <Link
