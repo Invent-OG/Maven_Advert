@@ -1,136 +1,9 @@
-// 'use client';
-
-// import { useEffect, useRef, useState } from 'react';
-// import gsap from 'gsap';
-// import { ScrollTrigger } from 'gsap/ScrollTrigger';
-
-// gsap.registerPlugin(ScrollTrigger);
-
-// export default function WhitePage() {
-//   const whiteSectionRef = useRef<HTMLElement | null>(null);
-//   const titleRef = useRef<HTMLDivElement | null>(null);
-//   const letterRefs = useRef<(HTMLSpanElement | null)[]>([]);
-//   const [isMobile, setIsMobile] = useState(false);
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIsMobile(window.innerWidth < 768);
-//     };
-
-//     handleResize();
-//     window.addEventListener('resize', handleResize);
-
-//     const ctx = gsap.context(() => {
-//       ScrollTrigger.refresh();
-
-//      ScrollTrigger.create({
-//   trigger: whiteSectionRef.current,
-//   start: 'top bottom',
-//   end: 'bottom center',
-//   onEnter: () => {
-//     gsap.to(document.body, {
-//       backgroundColor: '#ffffff',
-//       color: '#000000',
-//       duration: 0.2,
-//       ease: 'power2.inOut',
-//     });
-//   },
-//   onLeaveBack: () => {
-//     gsap.to(document.body, {
-//       backgroundColor: '#000000',
-//       color: '#ffffff',
-//       duration: 0.1,
-//       ease: 'power2.inOut',
-//     });
-//   },
-// });
-//       // ✅ Letter-by-letter animation (unchanged)
-//       const MOBILE_SCROLL_OFFSET = 4;
-//       const DESKTOP_SCROLL_STEP = 8;
-
-//       letterRefs.current.forEach((el, i) => {
-//         if (!el) return;
-
-//         const startTrigger = isMobile
-//           ? `top+=${i * MOBILE_SCROLL_OFFSET}px center`
-//           : `top+=${i * DESKTOP_SCROLL_STEP}px center`;
-
-//         gsap.fromTo(
-//           el,
-//           { color: '#9CA3AF' },
-//           {
-//             color: '#000000',
-//             scrollTrigger: {
-//               trigger: el,
-//               start: startTrigger,
-//               end: 'top center',
-//               scrub: true,
-//             },
-//           }
-//         );
-//       });
-//     }, whiteSectionRef);
-
-//     return () => {
-//       window.removeEventListener('resize', handleResize);
-//       ctx.revert();
-//     };
-//   }, [isMobile]);
-
-//   const text = 'Our Results-Driven\nPhilosophy';
-
-//   return (
-//     <section
-//       ref={whiteSectionRef}
-//       className="md:min-h-[140vh] min-h-[70vh] flex flex-col items-center px-4 md:py-20 py-24"
-//     >
-//       {/* Animated Heading */}
-//       <div
-//         ref={titleRef}
-//         className="text-center text-4xl sm:text-6xl md:text-[5.5rem] font-extrabold leading-snug mb-12"
-//       >
-//         {[...text].map((char, i) => {
-//           if (char === '\n') return <br key={`br-${i}`} />;
-//           if (char === ' ') {
-//             return (
-//               <span key={`space-${i}`} className="inline-block w-[0.4em]">
-//                 {' '}
-//               </span>
-//             );
-//           }
-//           return (
-//             <span
-//               key={i}
-//               ref={(el) => {
-//                 letterRefs.current[i] = el;
-//               }}
-//               className="inline-block"
-//               style={{ color: '#9CA3AF' }}
-//             >
-//               {char}
-//             </span>
-//           );
-//         })}
-//       </div>
-
-//       {/* Left-aligned paragraph */}
-//       <div className="w-full max-w-3xl px-4 md:px-0 self-start md:mt-32 md:pl-16">
-//         <p className="text-sm md:text-base font-medium text-black mb-2">
-//           ✦ Showcase your story through design
-//         </p>
-//         <p className="text-3xl md:text-6xl font-extrabold text-gray-300 leading-tight">
-//           If you appreciate the beauty in simplicity and value quality...
-//         </p>
-//       </div>
-//     </section>
-//   );
-// }
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import AboutCTA from './AboutCTA';
+import AnimatedHeading from '../AnimatedHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -151,29 +24,30 @@ export default function WhitePage() {
     const ctx = gsap.context(() => {
       ScrollTrigger.refresh();
 
-      // Background + Text color transition
-      gsap.to(document.body, {
-        scrollTrigger: {
-          trigger: whiteSectionRef.current,
-          start: 'top 90%',
-          end: 'center center',
-          scrub: true,
-          onUpdate: (self) => {
-            const progress = self.progress;
-            gsap.to(document.body, {
-              backgroundColor: progress > 0.4 ? '#ffffff' : '#000000',
-              color: progress > 0.3 ? '#000000' : '#ffffff',
-              overwrite: 'auto',
-              duration: 0,
-              ease: 'power1.out',
-            });
-          },
-        },
-      });
-
-      // Letter-by-letter animation
+     ScrollTrigger.create({
+  trigger: whiteSectionRef.current,
+  start: 'top bottom',
+  end: 'bottom center',
+  onEnter: () => {
+    gsap.to(document.body, {
+      backgroundColor: '#ffffff',
+      color: '#000000',
+      duration: 0.2,
+      ease: 'power2.inOut',
+    });
+  },
+  onLeaveBack: () => {
+    gsap.to(document.body, {
+      backgroundColor: '#000000',
+      color: '#ffffff',
+      duration: 0.1,
+      ease: 'power2.inOut',
+    });
+  },
+});
+      // ✅ Letter-by-letter animation (unchanged)
       const MOBILE_SCROLL_OFFSET = 4;
-      const DESKTOP_SCROLL_STEP = 12;
+      const DESKTOP_SCROLL_STEP = 8;
 
       letterRefs.current.forEach((el, i) => {
         if (!el) return;
@@ -207,14 +81,15 @@ export default function WhitePage() {
   const text = 'Our Results-Driven\nPhilosophy';
 
   return (
+    <div>
     <section
       ref={whiteSectionRef}
-      className="md:min-h-[140vh] sticky top-0  min-h-[60vh] flex flex-col items-center px-4 md:py-20 py-24"
+      className="min-h-screen sticky top-0  flex flex-col items-center px-4 "
     >
       {/* Animated Heading */}
       <div
         ref={titleRef}
-        className="text-center text-4xl sm:text-6xl md:text-[5.5rem] font-extrabold leading-snug mb-12"
+        className="text-center text-4xl sm:text-6xl md:text-[5.5rem] font-extrabold leading-snug "
       >
         {[...text].map((char, i) => {
           if (char === '\n') return <br key={`br-${i}`} />;
@@ -241,8 +116,8 @@ export default function WhitePage() {
       </div>
 
       {/* Left-aligned paragraph */}
-      <div className="w-full max-w-3xl px-4 md:px-0 self-start  md:mt-32 md:pl-16 py-10">
-        <p className="text-sm md:text-base font-medium text-black mb-4 ">
+      <div className="w-full max-w-3xl px-4 md:px-0 self-start md:mt-32 md:pl-16">
+        <p className="text-sm md:text-base font-medium text-black mb-2">
           ✦ Showcase your story through design
         </p>
         <p className="text-3xl md:text-6xl font-extrabold text-gray-300 leading-tight">
@@ -250,5 +125,45 @@ export default function WhitePage() {
         </p>
       </div>
     </section>
+        <section className="relative  min-h-screen flex flex-col items-center justify-center bg-[#171817] px-4 text-center z-20">
+        <AnimatedHeading
+          text="Let's Talk"
+          fromColor="#4e4e4e"
+          toColor="#d4d4d8"
+          className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+        />
+        <button className="text-white rounded-3xl border border-lime-200 px-6 py-2 font-medium shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
+          Book A Call
+        </button>
+      </section>
+    </div>
   );
 }
+// 'use client';
+
+// import gsap from 'gsap';
+// import { ScrollTrigger } from 'gsap/ScrollTrigger';
+// import AnimatedHeading from '../AnimatedHeading';
+
+// gsap.registerPlugin(ScrollTrigger);
+
+// export default function WhitePage() {
+
+
+
+
+
+//   return (
+//     <section className="relative -mt-10 md:-mt-20 min-h-screen flex flex-col items-center justify-center bg-white px-4 text-center z-20">
+//         <AnimatedHeading
+//           text="Let's Get Started"
+//           fromColor="#d4d4d8"
+//           toColor="#4e4e4e"
+//           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+//         />
+//         <button className="text-black rounded-3xl border border-lime-200 px-6 py-2 font-medium shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
+//           Book A Call
+//         </button>
+//       </section>
+//   );
+// }

@@ -1,4 +1,5 @@
 import BrandingSection from '@/components/sections/servicepage/BrandingSection'
+import FaqSection from '@/components/sections/servicepage/FaqSection'
 import ProcessTimeline from '@/components/sections/servicepage/ProcessTimeline'
 import ServiceLetsTalk from '@/components/sections/servicepage/ServiceLetsTalk'
 import ServicesHero from '@/components/sections/servicepage/ServicesHero'
@@ -21,6 +22,7 @@ function page() {
       {/* <BrandingSection/> */}
       <ProcessTimeline/>
       <ServiceLetsTalk/>
+      <FaqSection/>
     </div>
   )
 }

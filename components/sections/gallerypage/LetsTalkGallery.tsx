@@ -1,43 +1,35 @@
-'use client';
+"use client";
+import React from "react";
+import AnimatedHeading from "../AnimatedHeading";
 
-import React, { useRef, useEffect } from 'react';
-import gsap from 'gsap';
-
-const LetsTalkGallery = () => {
-  const marqueeRef = useRef<HTMLDivElement | null>(null);
-
-  useEffect(() => {
-    const marqueeElement = marqueeRef.current;
-    if (!marqueeElement) return;
-
-    const textWidth = marqueeElement.scrollWidth;
-    const containerWidth = marqueeElement.clientWidth;
-
-    // GSAP infinite scroll animation
-    gsap.to(marqueeElement, {
-      x: `-${textWidth / 2}`,
-      duration: 60,
-      ease: 'linear',
-      repeat: -1,
-    });
-  }, []);
-
+function LetsTalkGallery() {
   return (
-    <div className="w-full bg-lime-200 overflow-hidden py-6">
-      <div className="relative w-full">
-        <div
-          className="flex whitespace-nowrap text-black font-extrabold text-4xl lg:text-8xl uppercase tracking-widest gap-20"
-          ref={marqueeRef}
-        >
-          {Array(20)
-            .fill("OUR WORK")
-            .map((text, i) => (
-              <span key={i}>{text}</span>
-            ))}
-        </div>
-      </div>
-    </div>
+    <main className="relative w-full">
+      {/* Sticky Section */}
+      <section className="sticky top-0 h-screen bg-[#171817] z-10 flex flex-col items-start justify-start px-4 md:px-10 py-16 gap-6 md:gap-10">
+        <h2 className="text-base md:text-sm text-neutral-300">
+          ★ Partner with us for impactful results.
+        </h2>
+        <p className="text-neutral-300 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
+          If winning more clients <br className="hidden sm:block" /> sounds good
+          to you...
+        </p>
+      </section>
+
+      {/* Overlapping Section */}
+      <section className="relative -mt-10 md:-mt-20 min-h-screen flex flex-col items-center justify-center bg-white px-4 text-center z-20">
+        <AnimatedHeading
+          text="Let's Get Started"
+          fromColor="#d4d4d8"
+          toColor="#4e4e4e"
+          className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+        />
+        <button className="text-black rounded-3xl border border-lime-200 px-6 py-2 font-medium shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
+          Book A Call
+        </button>
+      </section>
+    </main>
   );
-};
+}
 
 export default LetsTalkGallery;
