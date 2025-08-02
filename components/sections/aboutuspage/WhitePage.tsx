@@ -53,8 +53,8 @@ export default function WhitePage() {
         if (!el) return;
 
         const startTrigger = isMobile
-          ? `top+=${i * MOBILE_SCROLL_OFFSET}px center`
-          : `top+=${i * DESKTOP_SCROLL_STEP}px center`;
+          ? `top+=${i * MOBILE_SCROLL_OFFSET}px end`
+          : `top+=${i * DESKTOP_SCROLL_STEP}px end`;
 
         gsap.fromTo(
           el,
@@ -89,7 +89,7 @@ export default function WhitePage() {
       {/* Animated Heading */}
       <div
         ref={titleRef}
-        className="text-center text-4xl sm:text-6xl md:text-[5.5rem] font-extrabold leading-snug "
+        className="text-center text-4xl sm:text-6xl md:text-[5.5rem] md:py-0 py-24 font-extrabold leading-snug "
       >
         {[...text].map((char, i) => {
           if (char === '\n') return <br key={`br-${i}`} />;
