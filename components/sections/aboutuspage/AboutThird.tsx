@@ -4,7 +4,7 @@ import AnimatedHeading from '../AnimatedHeading';
 
 function AboutSecond() {
   return (
-    <div className="md:min-h-screen bg-[#171817] flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-20 py-20  text-left">
+    <div className="md:min-h-screen bg-[#171817] flex flex-col md:flex-row justify-center items-center gap-10 px-6 md:px-20 md:pb-0 pb-10 text-left">
       {/* Text Section */}
       <div className="max-w-xl flex flex-col gap-5">
         <AnimatedHeading

@@ -48,6 +48,8 @@ const AnimatedHeading: React.FC<AnimatedHeadingProps> = ({
     return () => ctx.revert();
   }, [fromColor, toColor]);
 
+  
+
   return (
     <h1 ref={sectionRef} className={`font-bold ${className}`}>
       {text.split('').map((char, i) => (

@@ -10,7 +10,7 @@ export default function BrandingSection() {
         {/* Left side */}
         <div>
           <p className="text-sm text-black mb-2">✨ Elevate your brand aesthetics</p>
-          <h2 className="text-4xl text-neutral-400 md:text-5xl font-extrabold leading-tight mb-6">
+          <h2 className="text-3xl text-neutral-400 md:text-5xl font-extrabold leading-tight mb-6">
             Branding That <br /> Resonates With Your <br /> Audience
           </h2>
 

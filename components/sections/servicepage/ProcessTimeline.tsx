@@ -342,7 +342,7 @@ export default function ProcessTimeline() {
   }, []);
 
   return (
-    <section className="relative w-full max-w-7xl mx-auto px-6 py-28 flex flex-col md:flex-row gap-20 md:gap-12">
+    <section className="relative w-full max-w-7xl mx-auto px-6 md:py-28 flex flex-col md:flex-row gap-20 md:gap-12">
       {/* LEFT (Sticky on md+, normal on mobile) */}
       <div className="md:w-1/2 h-fit md:sticky md:top-16 space-y-6">
         <p className="text-sm uppercase text-black tracking-wide">★ Our Process</p>
