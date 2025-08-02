@@ -172,7 +172,7 @@ export default function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-200 h-screen flex flex-col items-center justify-center bg-white text-center px-4"
+      className="relative z-200 min-h-screen flex flex-col items-center justify-center bg-white text-center px-4"
     >
       <h2
         ref={textRef}
