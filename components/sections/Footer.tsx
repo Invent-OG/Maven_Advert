@@ -247,10 +247,10 @@ export default function Footer() {
   }, []);
 
   const navLinks = [
-    { label: "✦ Services", href: "#services" },
-    { label: "✦ Gallery", href: "#gallery" },
-    { label: "✦ About", href: "#about" },
-    { label: "✦ Contact", href: "#contact" },
+    { label: "✦ Services", href: "/service" },
+    { label: "✦ Gallery", href: "/gallery" },
+    { label: "✦ About", href: "/aboutus" },
+    { label: "✦ Contact", href: "/contact" },
   ];
 
   const letters = ["m", "a", "v", "e", "n"];
