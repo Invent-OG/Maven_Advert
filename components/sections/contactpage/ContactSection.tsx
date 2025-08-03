@@ -1,5 +1,7 @@
 "use client";
 
+import AnimatedButton from "@/components/ui/AnimatedButton";
+import router from "next/router";
 import React from "react";
 
 export default function ContactSection() {
@@ -75,12 +77,15 @@ export default function ContactSection() {
             </label>
           </div>
 
-          <button
+          {/* <button
             type="submit"
             className="mt-6 bg-white text-black font-semibold px-6 py-2 rounded-full hover:scale-105 transition duration-300 shadow-lg shadow-lime-400/60"
           >
             Submit
-          </button>
+          </button> */}
+          <div className="py-4">
+            <AnimatedButton>Submit</AnimatedButton>
+          </div>
         </form>
       </div>
     </section>

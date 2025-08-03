@@ -1,8 +1,11 @@
 "use client";
 import React from "react";
 import AnimatedHeading from "../AnimatedHeading";
+import AnimatedButton from "@/components/ui/AnimatedButton";
+import { useRouter } from "next/navigation";
 
 export default function WebDesignSection() {
+  const router = useRouter()
   return (
     <section className="bg-[#121312] min-h-screen text-white py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12">
@@ -24,9 +27,13 @@ export default function WebDesignSection() {
             engaging as it is intuitive. With a unique blend of creativity and
             strategy, we design sites that look good and perform even better.
           </p>
-          <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition">
+          {/* <button className="px-6 py-2 border border-white rounded-full hover:bg-white hover:text-black transition">
             Get Started
-          </button>
+          </button> */}
+          <AnimatedButton onClick={() => router.push("/service")} className="">
+                      Get Started
+                    </AnimatedButton>
+
         </div>
 
         {/* Right Video */}

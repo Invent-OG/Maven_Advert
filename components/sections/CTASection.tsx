@@ -104,6 +104,8 @@
 import { useEffect, useRef } from 'react';
 import { gsap } from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import WhiteButton from '../ui/WhiteButton';
+import { useRouter } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -113,6 +115,7 @@ export default function CTASection() {
   const textRef = useRef<HTMLHeadingElement | null>(null);
   const letterRefs = useRef<HTMLSpanElement[]>([]);
   const buttonRef = useRef(null);
+  const router = useRouter();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -191,12 +194,15 @@ export default function CTASection() {
           </span>
         ))}
       </h2>
-      <button
+      {/* <button
         // ref={buttonRef}
         className="px-6 mt-6 py-3 rounded-full text-sm font-medium bg-white text-black shadow-[0_0_10px_2px_rgba(191,255,0,0.5)] transition hover:bg-lime-100 text-center"
       >
         Book A Call
-      </button>
+      </button> */}
+        <WhiteButton className='mt-6' onClick={() => router.push('/contact')}>
+                Book A Call
+              </WhiteButton>
     </section>
   );
 }

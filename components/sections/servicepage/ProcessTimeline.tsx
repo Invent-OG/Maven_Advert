@@ -268,6 +268,8 @@ import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Link from 'next/link';
+import AnimatedButton from '@/components/ui/AnimatedButton';
+import { useRouter } from 'next/navigation';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -303,6 +305,7 @@ export default function ProcessTimeline() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const lineRef = useRef<HTMLDivElement | null>(null);
   const dotRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const router = useRouter()
 
   useEffect(() => {
     if (!containerRef.current || !lineRef.current) return;
@@ -353,13 +356,16 @@ export default function ProcessTimeline() {
           Launch
         </h2>
         <div className="flex flex-col sm:flex-row gap-4 pt-4 sm:pt-2">
-          <Link
+          {/* <Link
             href="/contact"
             className="px-6 py-3 rounded-full text-sm font-medium bg-white text-black shadow-[0_0_10px_2px_rgba(191,255,0,0.5)] transition hover:bg-lime-100 text-center"
           >
             Work With Us
-          </Link>
-          <button className="border border-gray-300 px-5 py-2 rounded-full text-sm hover:bg-gray-100">
+          </Link> */}
+          <AnimatedButton onClick={() => router.push("/contact")} className="shadow-none">
+                      Work With Us
+                    </AnimatedButton>
+          <button className="px-6 py-2 text-neutral-900 hover:bg-black hover:text-white border border-neutral-400 rounded-full w-max  transition">
             Contact Us
           </button>
         </div>

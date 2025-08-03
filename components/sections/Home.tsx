@@ -1,11 +1,12 @@
+import AnimatedButton from "../ui/AnimatedButton";
 
 export default function Home() {
   return (
-    <main className='h-[100vh] text-white text-9xl font-bold text-center justify-center flex items-center'>
-      {/* <Spline
-        scene="https://prod.spline.design/HWnmevWuj3p1HU0Y/scene.splinecode" 
-      /> */}
-        Maven Advert
-    </main>
+    <div className="h-screen bg-black text-white">
+      <main className="h-full flex flex-col justify-center items-center text-center gap-10 px-4">
+        <h1 className="text-6xl md:text-9xl font-bold">Maven Advert</h1>
+        <AnimatedButton type="submit">Submit</AnimatedButton>
+      </main>
+    </div>
   );
 }

@@ -1,6 +1,8 @@
 "use client";
 import React from "react";
 import AnimatedHeading from "../AnimatedHeading";
+import WhiteButton from "@/components/ui/WhiteButton";
+import router from "next/router";
 
 function LetsTalkGallery() {
   return (
@@ -11,7 +13,9 @@ function LetsTalkGallery() {
           ★ Partner with us for impactful results.
         </h2>
         <p className="text-neutral-300 text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight">
-          Let us craft a site that <br className="hidden sm:block" /> highlights your unique <br />work.
+          Let us craft a site that <br className="hidden sm:block" /> highlights
+          your unique <br />
+          work.
         </p>
       </section>
 
@@ -23,9 +27,10 @@ function LetsTalkGallery() {
           toColor="#000000"
           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
         />
-        <button className="text-black rounded-3xl border border-lime-200 px-6 py-2 font-medium shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
+
+        <WhiteButton className="mt-6" onClick={() => router.push("/contact")}>
           Book A Call
-        </button>
+        </WhiteButton>
       </section>
     </main>
   );

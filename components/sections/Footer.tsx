@@ -165,6 +165,7 @@ import { gsap } from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import Link from "next/link";
 import { Instagram, Linkedin, Dribbble } from "lucide-react";
+import { useRouter } from "next/navigation";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -172,6 +173,7 @@ export default function Footer() {
   const lettersRef = useRef<HTMLSpanElement[]>([]);
   const navLinksRef = useRef<HTMLDivElement[]>([]);
   const underlineRef = useRef<HTMLSpanElement | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const ctx = gsap.context(() => {
@@ -259,7 +261,7 @@ export default function Footer() {
     <footer className="md:min-h-[120vh] min-h-screen bg-black text-white px-6 md:px-12 py-12 flex flex-col justify-between">
       {/* Top Row */}
       <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 md:gap-0">
-        <p className="pl-2 py-2 text-xs md:text-sm text-gray-200 relative inline-block cursor-pointer">
+        <p onClick={()=>router.push('/')} className="pl-2 py-2 text-xs md:text-sm text-gray-200 relative inline-block cursor-pointer">
           Let&apos;s go home ↑
           <span
             ref={underlineRef}

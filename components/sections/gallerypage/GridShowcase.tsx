@@ -99,7 +99,9 @@
 // }
 "use client";
 
+import AnimatedButton from "@/components/ui/AnimatedButton";
 import Image from "next/image";
+import router from "next/router";
 
 export default function GridShowcase() {
   return (
@@ -187,12 +189,18 @@ export default function GridShowcase() {
       {/* CTA Buttons */}
 
       <div className="mt-10 flex gap-4 items-center justify-center md:flex-row">
-        <button className="bg-[#d1f95c] text-black px-6 py-2 rounded-full text-sm font-semibold hover:scale-105 transition">
+        {/* <button className="bg-[#d1f95c] text-black px-6 py-2 rounded-full text-sm font-semibold hover:scale-105 transition">
           Book A Call
-        </button>
-        <button className="border border-white text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-black transition">
+        </button> */}
+        <AnimatedButton onClick={() => router.push("/contact")} className="">
+                              Book A Call
+                            </AnimatedButton>
+        {/* <button className="border border-white text-white px-6 py-2 rounded-full text-sm font-semibold hover:bg-white hover:text-black transition">
           Our Services
-        </button>
+        </button> */}
+            <button className="px-6 py-2 text-white  hover:bg-neutral-800 border border-neutral-400 rounded-full w-max  transition">
+            Contact Us
+          </button>
       </div>
     </section>
   );

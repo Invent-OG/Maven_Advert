@@ -97,6 +97,8 @@
 'use client';
 import React from 'react';
 import AnimatedHeading from '../AnimatedHeading';
+import AnimatedButton from '@/components/ui/AnimatedButton';
+import router from 'next/router';
 
 function ServiceLetsTalk() {
   return (
@@ -117,9 +119,9 @@ function ServiceLetsTalk() {
           text="Let's Talk"
           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
         />
-        <button className="text-white rounded-3xl border border-lime-200 px-6 py-2 font-semibold shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
-          Book A Call
-        </button>
+        <AnimatedButton onClick={() => router.push("/contact")} className="">
+                              Book A Call
+                            </AnimatedButton>
       </section>
     </main>
   );

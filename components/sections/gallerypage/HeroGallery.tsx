@@ -49,6 +49,8 @@
 
 import React from 'react';
 import Image from 'next/image';
+import AnimatedButton from '@/components/ui/AnimatedButton';
+import router from 'next/router';
 
 export default function HeroGallery() {
   return (
@@ -85,9 +87,12 @@ export default function HeroGallery() {
 
       {/* Button aligned to right */}
       <div className="flex justify-end px-6 md:px-20">
-        <button className="text-white border border-white px-6 py-2 rounded-3xl text-sm md:text-base">
+        {/* <button className="text-white border border-white px-6 py-2 rounded-3xl text-sm md:text-base">
           Work with us
-        </button>
+        </button> */}
+        <AnimatedButton onClick={() => router.push("/contact")} className="">
+                              Work With Us
+                            </AnimatedButton>
       </div>
     </section>
   );

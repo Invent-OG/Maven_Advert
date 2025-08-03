@@ -1,9 +1,13 @@
 'use client';
 
 import React from 'react';
-import Link from 'next/link';
+import AnimatedButton from '../ui/AnimatedButton';
+import { useRouter } from 'next/navigation';
+import WhiteButton from '../ui/WhiteButton';
 
 function Gallery() {
+  const router = useRouter();
+
   return (
     <section className="min-h-screen flex flex-col items-center justify-center px-6 text-center bg-white text-black">
       <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold mb-4">
@@ -13,21 +17,16 @@ function Gallery() {
         Our happy clients, success stories, and gallery of specialised work.
       </p>
 
-      <div className="flex sm:flex-row gap-4 sm:justify-start justify-evenly">
-  <Link
-    href="/gallery"
-    className="px-6 py-3 border border-black rounded-full text-black text-sm font-medium transition hover:bg-black hover:text-white text-center"
-  >
-    View Gallery
-  </Link>
-  <Link
-    href="/contact"
-    className="px-6 py-3 rounded-full text-sm font-medium bg-white text-black shadow-[0_0_10px_2px_rgba(191,255,0,0.5)] transition hover:bg-lime-100 text-center"
-  >
-    Work With Us
-  </Link>
-</div>
+      <div className="flex flex-col sm:flex-row gap-4 sm:justify-center items-center">
+        <AnimatedButton
+          onClick={() => router.push('/gallery')} className='shadow-none'       >
+          View Gallery
+        </AnimatedButton>
 
+        <WhiteButton onClick={() => router.push('/contact')}>
+          Work With Us
+        </WhiteButton>
+      </div>
     </section>
   );
 }

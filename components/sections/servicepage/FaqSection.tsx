@@ -1,5 +1,7 @@
 'use client';
 
+import AnimatedButton from '@/components/ui/AnimatedButton';
+import router from 'next/router';
 import { useState } from 'react';
 
 const faqs = [
@@ -72,9 +74,12 @@ export default function FaqSection() {
         <p className="text-neutral-500">
           Please feel free to contact us if you have further questions.
         </p>
-        <button className="border border-neutral-500 text-neutral-500 rounded-full px-6 py-2 hover:bg-black hover:text-white transition">
+        {/* <button className="border border-neutral-500 text-neutral-500 rounded-full px-6 py-2 hover:bg-black hover:text-white transition">
           Contact Us
-        </button>
+        </button> */}
+        <AnimatedButton onClick={() => router.push("/contact")} className="shadow-none">
+                             Contact Us
+                            </AnimatedButton>
       </div>
 
       {/* Right Column - 50% width */}

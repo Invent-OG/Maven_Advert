@@ -40,7 +40,7 @@ export default function BrandingSection() {
             Great branding is unforgettable, and we make sure your brand’s essence is visible across all touchpoints. We craft trends that connect, stand out, and form a lasting impression. Whether you're a leading influencer or building a new venture, we’re branding services ready to match your bold with beauty.
           </p>
 
-          <button className="px-6 py-2  border border-neutral-400 rounded-full w-max hover:bg-white hover:text-black transition">
+          <button className="px-6 py-2 text-neutral-900 hover:bg-black hover:text-white  border border-neutral-400 rounded-full w-max  transition">
             View Gallery
           </button>
         </div>
