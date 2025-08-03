@@ -56,7 +56,7 @@ export default function FloatingTestimonials() {
   const isEven = index % 2 === 0;
 
   return (
-    <section className="min-h-[100vh] z-100 bg-black relative">
+    <section className="min-h-[100vh] z-100 bg-[#171817] relative">
       {/* Sticky container */}
       <div className="sticky top-20 h-screen flex items-center justify-center">
         <div className="relative w-full max-w-6xl flex justify-center items-center">

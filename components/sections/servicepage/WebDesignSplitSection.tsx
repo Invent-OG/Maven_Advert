@@ -4,7 +4,7 @@ import AnimatedHeading from "../AnimatedHeading";
 
 export default function WebDesignSplitSection() {
   return (
-    <section className="bg-[#121312] min-h-screen text-white py-16">
+    <section className="bg-[#171817] min-h-screen text-white py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col-reverse md:flex-row items-center justify-between gap-12">
         
         {/* Left Video */}

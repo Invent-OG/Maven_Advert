@@ -185,7 +185,7 @@ export default function ServicesSection() {
   return (
     <section
       ref={containerRef}
-      className="relative py-6 bg-[#121312] grid grid-cols-1 md:grid-cols-2 overflow-hidden px-6 md:px-10"
+      className="relative py-6 bg-[#171817] grid grid-cols-1 md:grid-cols-2 overflow-hidden px-6 md:px-10"
     >
       {/* Floating Icons */}
       {!isMobile &&

@@ -114,7 +114,7 @@ function ServiceLetsTalk() {
       </section>
 
       {/* Overlapping Section */}
-      <section className="relative -mt-10 md:-mt-20 min-h-screen flex flex-col items-center justify-center bg-neutral-900 text-neutral-400 px-4 text-center z-20">
+      <section className="relative -mt-10 md:-mt-20 min-h-screen flex flex-col items-center justify-center bg-[#171817] text-neutral-400 px-4 text-center z-20">
         <AnimatedHeading
           text="Let's Talk"
           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"

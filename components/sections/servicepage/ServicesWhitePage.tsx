@@ -168,8 +168,8 @@ export default function ServicesWhitePage() {
           onUpdate: (self) => {
             const progress = self.progress;
             gsap.to(document.body, {
-              backgroundColor: progress > 0.2 ? '#ffffff' : '#000000',
-              color: progress > 0.3 ? '#000000' : '#ffffff',
+              backgroundColor: progress > 0.2 ? '#ffffff' : '#171817',
+              color: progress > 0.3 ? '#171817' : '#ffffff',
               overwrite: 'auto',
               duration: 0,
               ease: 'power1.out',

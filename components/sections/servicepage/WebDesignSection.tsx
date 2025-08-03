@@ -7,7 +7,7 @@ import { useRouter } from "next/navigation";
 export default function WebDesignSection() {
   const router = useRouter()
   return (
-    <section className="bg-[#121312] min-h-screen text-white py-16">
+    <section className="bg-[#171817] min-h-screen text-white py-16">
       <div className="max-w-7xl mx-auto px-6 md:px-12 flex flex-col md:flex-row items-center justify-between gap-12">
         
         {/* Left Content */}
@@ -37,8 +37,8 @@ export default function WebDesignSection() {
         </div>
 
         {/* Right Video */}
-        <div className="md:w-1/2 w-full rounded-xl  overflow-hidden shadow-lg bg-[#2b2b2b] ">
-          <div className="bg-[#2b2b2b]  rounded-lg">
+        <div className="md:w-1/2 w-full rounded-xl  overflow-hidden shadow-lg bg-[#171817] ">
+          <div className="bg-[#171817]  rounded-lg">
             <video
               autoPlay
               loop

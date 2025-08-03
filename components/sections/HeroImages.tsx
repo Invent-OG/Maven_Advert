@@ -294,7 +294,7 @@ export default function HeroImages() {
   const headingText = "We're Known For";
 
   return (
-    <div className="bg-neutral-900">
+    <div className="bg-[#171817]">
       {/* Header Section */}
       <div className="px-6 md:px-20 pt-20">
         <h1
@@ -330,7 +330,7 @@ export default function HeroImages() {
             {heroImages.map((img, index) => (
               <div
                 key={index}
-                className="panel relative h-[300px] w-[280px] md:h-[500px] md:w-[500px] flex-shrink-0 rounded-xl overflow-hidden bg-neutral-700 shadow-lg group"
+                className="panel relative h-[300px] w-[280px] md:h-[500px] md:w-[500px] flex-shrink-0 rounded-xl overflow-hidden bg-[#171817] shadow-lg group"
               >
                 <Image
                   src={img.src}
@@ -362,7 +362,7 @@ export default function HeroImages() {
           {heroImages.map((img, index) => (
             <div
               key={index}
-              className="relative h-[400px] w-full rounded-xl overflow-hidden bg-neutral-700 shadow-md"
+              className="relative h-[400px] w-full rounded-xl overflow-hidden bg-[#171817] shadow-md"
             >
               <Image
                 src={img.src}

@@ -23,7 +23,8 @@ const LetsTalk = () => {
   }, []);
 
   return (
-    <div className="w-full bg-lime-200 overflow-hidden py-6">
+    <div className=''>
+      <div className="w-full bg-[#DDF694] overflow-hidden py-6">
       <div className="relative w-full">
         <div
           className="flex whitespace-nowrap text-black font-extrabold text-4xl lg:text-8xl uppercase tracking-widest gap-20"
@@ -36,6 +37,7 @@ const LetsTalk = () => {
             ))}
         </div>
       </div>
+    </div>
     </div>
   );
 };
