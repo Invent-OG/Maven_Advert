@@ -119,17 +119,17 @@
 //     </section>
 //   );
 // }
-'use client';
+"use client";
 
-import React, { useRef, useEffect, useState } from 'react';
-import { gsap } from 'gsap';
-import Image from 'next/image';
+import React, { useRef, useEffect, useState } from "react";
+import { gsap } from "gsap";
+import Image from "next/image";
 
 const services = [
-  { label: 'Website Design', icon: '/assets/icons/icon5.avif' },
-  { label: 'Development', icon: '/assets/icons/icon6.avif' },
-  { label: 'SEO + CMS', icon: '/assets/icons/icon7.avif' },
-  { label: 'Branding', icon: '/assets/icons/icon5.avif' },
+  { label: "Website Design", icon: "/assets/icons/icon5.avif" },
+  { label: "Development", icon: "/assets/icons/icon6.avif" },
+  { label: "SEO + CMS", icon: "/assets/icons/icon7.avif" },
+  { label: "Branding", icon: "/assets/icons/icon5.avif" },
 ];
 
 export default function ServicesSection() {
@@ -137,6 +137,7 @@ export default function ServicesSection() {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const [isMobile, setIsMobile] = useState(false);
   const [mounted, setMounted] = useState(false);
+  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
 
   // Hydration-safe and responsive check
   useEffect(() => {
@@ -147,8 +148,8 @@ export default function ServicesSection() {
     };
 
     handleResize(); // Initial check
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
   }, []);
 
   // Initialize icons with hidden style
@@ -162,8 +163,13 @@ export default function ServicesSection() {
     }
   }, [isMobile]);
 
-  const handleMouseEnter = (index: number, e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseEnter = (
+    index: number,
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
     if (isMobile || !containerRef.current) return;
+    setHoveredIndex(index); // 👈
+
     const icon = iconRefs.current[index];
     if (!icon) return;
 
@@ -175,7 +181,10 @@ export default function ServicesSection() {
     gsap.to(icon, { autoAlpha: 1, scale: 1.5, duration: 0.2 });
   };
 
-  const handleMouseMove = (index: number, e: React.MouseEvent<HTMLDivElement>) => {
+  const handleMouseMove = (
+    index: number,
+    e: React.MouseEvent<HTMLDivElement>
+  ) => {
     if (isMobile || !containerRef.current) return;
     const icon = iconRefs.current[index];
     if (!icon) return;
@@ -193,6 +202,7 @@ export default function ServicesSection() {
     if (icon) {
       gsap.to(icon, { autoAlpha: 0, scale: 0.5, duration: 0.3 });
     }
+    setHoveredIndex(null); // 👈
   };
 
   if (!mounted) return null; // Prevent hydration mismatch
@@ -203,29 +213,27 @@ export default function ServicesSection() {
       className="relative py-6 bg-[#171817] grid grid-cols-1 md:grid-cols-2 overflow-hidden px-6 md:px-10 min-h-screen"
     >
       {/* Floating Icons */}
-      {!isMobile &&
-        services.map((service, index) => (
-          <div
-            key={index}
-            ref={(el) => {
-              iconRefs.current[index] = el;
-            }}
-            className="absolute w-32 h-32 pointer-events-none z-0"
-          >
-            <Image
-              src={service.icon}
-              alt={service.label}
-              fill
-              className="object-contain"
-            />
-          </div>
-        ))}
+      {!isMobile && hoveredIndex !== null && (
+        <div
+          ref={(el) => {
+            iconRefs.current[hoveredIndex] = el;
+          }}
+          className="absolute w-56 h-56 pointer-events-none z-0"
+        >
+          <Image
+            src={services[hoveredIndex].icon}
+            alt={services[hoveredIndex].label}
+            fill
+            className="object-contain"
+          />
+        </div>
+      )}
 
       {/* Left spacer column */}
       <div className="hidden md:block" />
 
       {/* Right: Service labels */}
-<div className="flex flex-col justify-center items-end md:gap-6 gap-0 w-full relative z-10">
+      <div className="flex flex-col justify-center items-end md:gap-6 gap-0 w-full relative z-10">
         {services.map((service, index) => (
           <div
             key={index}
