@@ -86,6 +86,7 @@
 import React, { useRef, useEffect } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { FaBolt, FaPalette, FaStar } from 'react-icons/fa';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -159,17 +160,17 @@ export default function WhyChooseUs() {
     {
       title: 'Specialists In The Building Industry',
       desc: 'We know your industry inside-out and understand what potential clients are looking for. Showcase your expertise and build trust instantly.',
-      icon: '✨',
+      icon: FaStar,
     },
     {
       title: 'Data-Driven Design',
       desc: "Every website is custom-built and optimised with usability data and UX design principals to turn visitors into clients. While aligning to your brand's aesthetic language.",
-      icon: '⚡',
+      icon: FaBolt,
     },
     {
       title: 'Captivating Digital Solutions',
       desc: 'We create digital experiences that your visitors will remember. Our websites are designed to impress and engage potential clients within seconds.',
-      icon: '🎨',
+      icon: FaPalette,
     },
   ];
 
@@ -185,7 +186,9 @@ export default function WhyChooseUs() {
       </h2>
 
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        {features.map((feature, i) => (
+        {features.map((feature, i) => {
+        const Icon = feature.icon;
+        return (
           <div
             key={i}
             className={`feature-card bg-[#171817] text-white p-8 rounded-lg border border-[#DDF694] shadow-[0px_0px_25px_6px_#6F7C4E] hover:shadow-[0px_0px_35px_8px_#6F7C4E] transition duration-300 ease-in-out ${
@@ -196,18 +199,20 @@ export default function WhyChooseUs() {
               ref={(el) => {
                 iconRefs.current[i] = el;
               }}
-              className="text-5xl mb-6 flex justify-center"
+              className="text-7xl mb-6 flex justify-center"
             >
-              {feature.icon}
+              <Icon className="text-white" />
             </div>
-            <h3 className="text-xl font-semibold mb-3 text-center">
+            <h3 className="text-2xl font-semibold mb-6 text-start">
               {feature.title}
             </h3>
-            <p className="text-neutral-300 text-sm leading-relaxed text-center">
+            <p className="text-neutral-300 text-[0.95rem] leading-relaxed text-start">
               {feature.desc}
             </p>
           </div>
-        ))}
+        );
+      })}
+
       </div>
     </section>
   );
