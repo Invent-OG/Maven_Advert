@@ -299,15 +299,15 @@ export default function HeroImages() {
       {/* Header Section */}
       <div className="px-6 md:px-20 pt-20">
         <AnimatedHeading
-          text="Our Areas Expertise"
-          className="text-4xl  md:text-[5.5rem] font-extrabold leading-tight mb-6 "
+          text={`We're Known For`}
+          className="text-4xl  md:text-[5rem] font-extrabold leading-tight mb-6 "
           scrubSpeed={0.1}
 startOffset={5}
 endOffset={10}
         
         />
         
-        <p className="text-sm md:text-lg text-neutral-400 max-w-3xl">
+        <p className="text-sm md:text-sm text-neutral-400 max-w-2xl">
           Building high-performance websites that are specifically designed to showcase your unique style of
           work and boost client leads.
         </p>

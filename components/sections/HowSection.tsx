@@ -16,7 +16,7 @@ const HowSection = () => {
       scrubSpeed={0.1}
 startOffset={5}
 endOffset={10}/>
-      <p className="text-lg md:text-xl text-neutral-400 max-w-2xl">
+      <p className="text-lg md:text-sm text-neutral-400 max-w-2xl">
         This is how we do it.
       </p>
     </section>
