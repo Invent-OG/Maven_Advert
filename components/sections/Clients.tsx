@@ -715,7 +715,7 @@ export default function ClientCardsSection() {
   }, [isMobile]);
 
   return (
-    <div ref={wrapperRef} className="bg-[#171817] text-white transition-colors duration-1000">
+    <div ref={wrapperRef} className="bg-[#171817] transition-colors duration-1000">
       <section
         ref={sectionRef}
         className={`relative flex ${
