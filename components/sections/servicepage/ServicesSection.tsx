@@ -210,7 +210,7 @@ export default function ServicesSection() {
             ref={(el) => {
               iconRefs.current[index] = el;
             }}
-            className="absolute w-32 h-32 pointer-events-none z-50"
+            className="absolute w-32 h-32 pointer-events-none z-0"
           >
             <Image
               src={service.icon}
@@ -225,11 +225,11 @@ export default function ServicesSection() {
       <div className="hidden md:block" />
 
       {/* Right: Service labels */}
-      <div className="flex flex-col justify-center items-end md:gap-6 gap-0 w-full">
+<div className="flex flex-col justify-center items-end md:gap-6 gap-0 w-full relative z-10">
         {services.map((service, index) => (
           <div
             key={index}
-            className="w-full py-6 text-right cursor-pointer text-gray-300 hover:text-white text-3xl md:text-5xl font-bold transition-colors"
+            className="w-full py-6 z-10 text-right cursor-pointer text-gray-300 hover:text-white text-3xl md:text-5xl font-bold transition-colors"
             onMouseEnter={(e) => handleMouseEnter(index, e)}
             onMouseMove={(e) => handleMouseMove(index, e)}
             onMouseLeave={() => handleMouseLeave(index)}
