@@ -133,6 +133,9 @@ export default function WhitePage() {
           fromColor="#4e4e4e"
           toColor="#d4d4d8"
           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+          scrubSpeed={0.10}
+startOffset={7}
+endOffset={7}
         />
         {/* <button className="text-white rounded-3xl border border-lime-200 px-6 py-2 font-medium shadow-[0_4px_30px_rgba(163,230,53,0.5)] hover:shadow-[0_6px_40px_rgba(163,230,53,0.7)] transition-all duration-300">
           Book A Call

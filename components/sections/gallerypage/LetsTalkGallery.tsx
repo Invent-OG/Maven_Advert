@@ -26,6 +26,10 @@ function LetsTalkGallery() {
           fromColor="#d4d4d8"
           toColor="#000000"
           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+        scrubSpeed={0.10}
+startOffset={7}
+endOffset={7}
+        
         />
 
         <WhiteButton className="mt-6" onClick={() => router.push("/contact")}>

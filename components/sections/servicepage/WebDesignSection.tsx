@@ -19,6 +19,9 @@ export default function WebDesignSection() {
             <AnimatedHeading
           text="Results-Driven WebDesign"
           className="text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+          scrubSpeed={0.2}
+startOffset={11}
+endOffset={45}
         />
           <p className="text-gray-300 mb-8 leading-relaxed">
             Our website designs go beyond visuals—they’re crafted to captivate,

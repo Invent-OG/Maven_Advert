@@ -118,6 +118,9 @@ function ServiceLetsTalk() {
         <AnimatedHeading
           text="Let's Talk"
           className="text-3xl sm:text-4xl md:text-6xl font-extrabold leading-tight mb-6"
+          scrubSpeed={0.10}
+startOffset={11}
+endOffset={45}
         />
         <AnimatedButton onClick={() => router.push("/contact")} className="">
                               Book A Call

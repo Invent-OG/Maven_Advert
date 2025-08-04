@@ -287,6 +287,7 @@ import {
   FaStar,
 } from 'react-icons/fa';
 import FinalSection from './FinalSection';
+import AnimatedHeading from './AnimatedHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -441,17 +442,6 @@ export default function ClientCardsSection() {
     };
   }, [isMobile]);
 
-  const wrapText = (text: string) => {
-    return text.split('').map((char, index) => (
-      <span
-        key={index}
-        className="inline-block text-gray-600 transition-colors duration-500"
-      >
-        {char === ' ' ? ' ' : char}
-      </span>
-    ));
-  };
-
   return (
     <div ref={wrapperRef} className="bg-[#171817] text-white transition-colors duration-1000">
       <section
@@ -465,32 +455,37 @@ export default function ClientCardsSection() {
         {/* Left Side */}
         {isMobile ? (
           <div
-            ref={mobileLeftRef}
             className="w-full sticky top-0 z-0 bg-[#171817] py-12 text-center"
           >
-            <p className="text-sm text-neutral-400 mb-2">
+            <p className="text-sm text-start text-neutral-400 mb-2">
               ★ Attract more clients, high-end clients.
             </p>
-            <h1 className="text-4xl sm:text-5xl font-bold leading-tight space-y-2">
-              <div>{wrapText('We Help')}</div>
-              <div>{wrapText('Grow Your')}</div>
-              <div>{wrapText('Company By')}</div>
-            </h1>
+            {/* <h1 className="text-4xl sm:text-5xl font-bold leading-tight space-y-2">
+              <div>{wrapText('We Help Grow')}</div>
+              <div>{wrapText(' Your Company')}</div>
+              <div>{wrapText(' By')}</div>
+            </h1> */}
+            <AnimatedHeading className='text-4xl text-start sm:text-5xl font-bold leading-tight space-y-2' text={`We Help Grow\nYour Company\nBy`}/>
           </div>
         ) : (
           <div
-            ref={leftRef}
             className="md:w-1/2 w-full h-screen sticky top-0 flex items-center justify-center"
           >
             <div className="text-left px-4">
               <p className="text-sm text-neutral-400 mb-4">
                 ★ Attract more clients, high-end clients.
               </p>
-              <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight space-y-2">
+              {/* <h1 className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight space-y-2">
                 <div>{wrapText('We Help')}</div>
                 <div>{wrapText('Grow Your')}</div>
                 <div>{wrapText('Company By')}</div>
-              </h1>
+              </h1> */}
+              {/* <AnimatedHeading className='text-4xl sm:text-5xl md:text-7xl font-bold leading-tight space-y-2' text='We Help Grow Your Company By'/> */}
+                  <AnimatedHeading
+  className="text-4xl sm:text-5xl md:text-7xl font-bold leading-tight space-y-2"
+  text={`We Help\nGrow Your\nCompany By`}
+/>
+
             </div>
           </div>
         )}

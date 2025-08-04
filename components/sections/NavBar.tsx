@@ -206,7 +206,7 @@ export default function NavBar() {
             className="relative group pb-4"
           >
             <span className="inline-block">Our Services</span>
-            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-lime-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
+            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-[#DDF694] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
           </Link>
 
           <Link
@@ -215,7 +215,7 @@ export default function NavBar() {
             className="relative group pb-4"
           >
             <span className="inline-block">Project Gallery</span>
-            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-lime-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
+            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-[#DDF694] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
           </Link>
 
           <Link
@@ -224,7 +224,7 @@ export default function NavBar() {
             className="relative group pb-4"
           >
             <span className="inline-block">Learn About Us</span>
-            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-lime-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
+            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-[#DDF694] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
           </Link>
 
           <Link
@@ -233,7 +233,7 @@ export default function NavBar() {
             className="relative group pb-4"
           >
             <span className="inline-block">Work With Us</span>
-            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-lime-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
+            <span className="absolute bottom-0 left-0 w-full h-[4px] bg-[#DDF694] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-bottom" />
           </Link>
         </nav>
       </div>

@@ -4,6 +4,7 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import AnimatedHeading from './AnimatedHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -74,7 +75,6 @@ export default function FinalSection() {
     };
   }, [isMobile]);
 
-  const text = 'Attract High-End Clients,and \nMore of Them.';
 
   return (
     <div ref={wrapperRef}>
@@ -82,7 +82,7 @@ export default function FinalSection() {
         ref={whiteSectionRef}
         className="min-h-screen flex items-center justify-center px-4"
       >
-        <div
+        {/* <div
           ref={titleRef}
           className="text-center text-4xl sm:text-6xl md:text-[5.5rem] font-bold leading-snug"
         >
@@ -109,7 +109,17 @@ export default function FinalSection() {
               </span>
             );
           })}
-        </div>
+        </div> */}
+        <AnimatedHeading
+         className='text-center text-4xl sm:text-6xl md:text-[5.5rem] font-bold leading-snug'  
+         text={`Attract High-End Clients, and\nMore of Them.`}
+         fromColor='#CBCBCB'
+         toColor='#000000'
+         scrubSpeed={0.5}
+startOffset={7}
+endOffset={7}
+
+         /> 
       </section>
     </div>
   );

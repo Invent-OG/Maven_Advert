@@ -10,6 +10,10 @@ function AboutSecond() {
         <AnimatedHeading
           text="Our Approach"
           className="text-4xl md:text-5xl mb-4 text-left"
+           scrubSpeed={0.8}
+startOffset={7}
+endOffset={7}
+        
         />
         <p className="text-gray-300 text-left text-sm md:text-base leading-relaxed">
           We don’t just create designs—we solve your problems. It all starts with listening.

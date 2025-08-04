@@ -31,6 +31,9 @@ export default function WebDesignSplitSection() {
           <AnimatedHeading
             text="SEO"
             className="text-3xl md:text-6xl font-extrabold leading-relaxed mb-4"
+          scrubSpeed={0.2}
+startOffset={11}
+endOffset={45}
           />
           <p className="text-gray-300 mb-8 leading-relaxed">
             We don’t just build websites — we build digital experiences that
@@ -41,6 +44,9 @@ export default function WebDesignSplitSection() {
           <AnimatedHeading
             text="CMS"
             className="text-3xl md:text-6xl font-extrabold leading-relaxed mb-4"
+          scrubSpeed={0.2}
+startOffset={11}
+endOffset={45}
           />
           <p className="text-gray-300 mb-8 leading-relaxed">
             Your site is your strongest marketing tool. We create high-converting

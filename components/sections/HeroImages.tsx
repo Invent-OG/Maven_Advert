@@ -183,6 +183,7 @@ import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import Image from 'next/image';
+import AnimatedHeading from './AnimatedHeading';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -297,23 +298,15 @@ export default function HeroImages() {
     <div className="bg-[#171817]">
       {/* Header Section */}
       <div className="px-6 md:px-20 pt-20">
-        <h1
-          ref={headingRef}
-          className="text-4xl  md:text-8xl font-bold leading-tight mb-6  "
-        >
-          {headingText.split('').map((char, i) => (
-            <span
-  key={i}
-  ref={(el) => {
-    if (el) letterRefs.current[i] = el;
-  }}
-  className="inline-block text-neutral-400" // Tailwind for #A3A3A3
->
-  {char === ' ' ? '\u00A0' : char}
-</span>
-
-          ))}
-        </h1>
+        <AnimatedHeading
+          text="Our Areas Expertise"
+          className="text-4xl  md:text-[5.5rem] font-extrabold leading-tight mb-6 "
+          scrubSpeed={0.1}
+startOffset={5}
+endOffset={10}
+        
+        />
+        
         <p className="text-sm md:text-lg text-neutral-400 max-w-3xl">
           Building high-performance websites that are specifically designed to showcase your unique style of
           work and boost client leads.
