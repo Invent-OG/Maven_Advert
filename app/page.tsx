@@ -1,3 +1,4 @@
+import ThreeCards from "@/components/sections/blogpage/ThreeCards";
 import Clients from "@/components/sections/Clients";
 import ClientSuccessSection from "@/components/sections/ClientSuccessSection";import Gallery from "@/components/sections/Gallery";
 import HeroImages from "@/components/sections/HeroImages";
@@ -20,6 +21,7 @@ export default function HomePage() {
     <Gallery/>
     <WhyChooseUs/>
     <LetsTalk/>
+    <ThreeCards/>
     <TestimonialsSection/>   
     </>
   );
