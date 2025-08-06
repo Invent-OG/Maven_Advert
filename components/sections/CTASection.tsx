@@ -175,7 +175,7 @@ export default function CTASection() {
   return (
     <section
       ref={sectionRef}
-      className="relative z-200 min-h-screen flex flex-col items-center justify-center bg-white text-center px-4"
+      className="relative min-h-screen flex flex-col items-center justify-center bg-white text-center px-4"
     >
       <h2
         ref={textRef}
@@ -194,12 +194,6 @@ export default function CTASection() {
           </span>
         ))}
       </h2>
-      {/* <button
-        // ref={buttonRef}
-        className="px-6 mt-6 py-3 rounded-full text-sm font-medium bg-white text-black shadow-[0_0_10px_2px_rgba(191,255,0,0.5)] transition hover:bg-lime-100 text-center"
-      >
-        Book A Call
-      </button> */}
         <WhiteButton className='mt-6' onClick={() => router.push('/contact')}>
                 Book A Call
               </WhiteButton>

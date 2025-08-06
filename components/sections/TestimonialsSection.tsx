@@ -140,7 +140,7 @@ export default function FloatingTestimonials() {
   const isEven = index % 2 === 0;
 
   return (
-    <section className="min-h-screen bg-[#171817] relative pt-16">
+    <section className="bg-[#171817] relative pt-16">
       {/* Heading */}
       <div className="text-center mb-10 px-4">
         {/* <h2 className="text-4xl md:text-5xl font-bold text-white">Testimonials</h2> */}
@@ -151,7 +151,9 @@ export default function FloatingTestimonials() {
       </div>
 
       {/* Sticky Content */}
-      <div className="sticky top-0 h-screen flex items-center justify-center">
+      {/* <div className="sticky top-0 min-h-screen flex items-center justify-center"> */}
+      <div className="sticky top-0 flex items-center justify-center py-20">
+
         <div className="relative w-full max-w-6xl px-4 md:px-8 flex flex-col md:flex-row items-center justify-center gap-6">
           {/* Image */}
           <div
