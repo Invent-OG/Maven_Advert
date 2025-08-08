@@ -1,6 +1,7 @@
 import ThreeCards from "@/components/sections/blogpage/ThreeCards";
 import Clients from "@/components/sections/Clients";
-import ClientSuccessSection from "@/components/sections/ClientSuccessSection";import Gallery from "@/components/sections/Gallery";
+import ClientSuccessSection from "@/components/sections/ClientSuccessSection";
+import Gallery from "@/components/sections/Gallery";
 import HeroImages from "@/components/sections/HeroImages";
 import HeroVideos from "@/components/sections/HeroVideos";
 import Home from "@/components/sections/Home"; // ✅ default import
@@ -13,16 +14,16 @@ export default function HomePage() {
   return (
     <>
       <Home />
-      <HeroImages/>
-      <HowSection/>
-      <Clients/>
-    <ClientSuccessSection />
-    <HeroVideos/>
-    <Gallery/>
-    <WhyChooseUs/>
-    <LetsTalk/>
-    <ThreeCards/>
-    <TestimonialsSection/>   
+      <HeroImages />
+      <HowSection />
+      <Clients />
+      <ClientSuccessSection />
+      <HeroVideos />
+      <Gallery />
+      <WhyChooseUs />
+      <LetsTalk />
+      <ThreeCards />
+      <TestimonialsSection />
     </>
   );
 }
