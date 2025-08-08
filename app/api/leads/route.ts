@@ -2,38 +2,30 @@ import { NextResponse } from "next/server";
 import { z } from "zod";
 import { db } from "@/lib/db";
 import { leads } from "@/lib/db/schema";
-import { eq, asc } from "drizzle-orm";
-import { v4 as uuidv4 } from "uuid";
-import { sendContactEmails } from "@/lib/email";
+import { eq, count, like, and, sql } from "drizzle-orm";
 import { leadSchema } from "@/lib/types/leads";
 
-// Zod validation schema for input
-
-// POST - Create a new lead
 export async function POST(req: Request) {
   try {
     const body = await req.json();
     const data = leadSchema.parse(body);
 
-    const newLead = {
-      id: uuidv4(),
-      ...data,
-    };
+    const [lead] = await db.insert(leads).values(data).returning();
 
-    await sendContactEmails(data);
-
-    const [lead] = await db.insert(leads).values(newLead).returning();
+    // Send thank you email
+    // await sendLeadThankYouEmail(
+    //   data.whatsappNumber + "@whatsapp.com",
+    //   data.name
+    // );
 
     return NextResponse.json({ success: true, lead });
   } catch (error) {
     if (error instanceof z.ZodError) {
-      // Return validation errors
       return NextResponse.json(
-        { success: false, errors: error },
+        { success: false, errors: error.issues },
         { status: 400 }
       );
     }
-    console.error("POST /api/leads error:", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
       { status: 500 }
@@ -41,16 +33,74 @@ export async function POST(req: Request) {
   }
 }
 
-// GET - Fetch all leads, ordered by createdAt ascending
-export async function GET() {
+export async function GET(req: Request) {
   try {
+    const { searchParams } = new URL(req.url);
+    const page = parseInt(searchParams.get("page") || "1");
+    const limit = parseInt(searchParams.get("limit") || "10");
+    const search = searchParams.get("search") || "";
+    const date = searchParams.get("date");
+    const type = searchParams.get("type");
+
+    const offset = (page - 1) * limit;
+
+    // Build where conditions
+    let whereConditions = [];
+
+    if (search) {
+      whereConditions.push(
+        sql`(${leads.name} ILIKE ${`%${search}%`} OR 
+             ${leads.whatsappNumber} ILIKE ${`%${search}%`} OR 
+             ${leads.city} ILIKE ${`%${search}%`})`
+      );
+    }
+
+    if (date) {
+      const dateObj = new Date(date);
+      const nextDay = new Date(dateObj);
+      nextDay.setDate(nextDay.getDate() + 1);
+
+      whereConditions.push(
+        sql`${leads.createdAt} >= ${dateObj.toISOString()} AND 
+            ${leads.createdAt} < ${nextDay.toISOString()}`
+      );
+    }
+
+    if (type) {
+      //@ts-ignore
+      whereConditions.push(eq(leads.type, type as any));
+    }
+
+    // Combine conditions
+    const whereClause =
+      whereConditions.length > 0 ? and(...whereConditions) : undefined;
+
+    // Get total count
+    const [{ value: totalCount }] = await db
+      .select({ value: count() })
+      .from(leads)
+      .where(whereClause || sql`1=1`);
+
+    // Get paginated leads
     const allLeads = await db
       .select()
       .from(leads)
-      .orderBy(asc(leads.createdAt));
-    return NextResponse.json({ success: true, leads: allLeads });
+      .where(whereClause || sql`1=1`)
+      .orderBy(sql`${leads.createdAt} DESC`)
+      .limit(limit)
+      .offset(offset);
+
+    const totalPages = Math.ceil(totalCount / limit);
+
+    return NextResponse.json({
+      success: true,
+      leads: allLeads,
+      totalCount,
+      totalPages,
+      currentPage: page,
+    });
   } catch (error) {
-    console.error("GET /api/leads error:", error);
+    console.error("Error fetching leads:", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
       { status: 500 }
@@ -58,7 +108,6 @@ export async function GET() {
   }
 }
 
-// DELETE - Delete lead by ID passed as query param (?id=...)
 export async function DELETE(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
@@ -72,10 +121,8 @@ export async function DELETE(req: Request) {
     }
 
     await db.delete(leads).where(eq(leads.id, id));
-
     return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("DELETE /api/leads error:", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
       { status: 500 }

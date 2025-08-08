@@ -31,7 +31,7 @@ export async function POST(req: Request) {
         name: data.name,
         role: data.role,
         content: data.content,
-        imageUrl: data.imageUrl, // ✅ Use camelCase (matches Drizzle schema key)
+        imageUrl: data.imageUrl!,
         youtubeUrl: data.youtubeUrl || null,
       })
       .returning();
@@ -52,7 +52,7 @@ export async function POST(req: Request) {
   }
 }
 
-// DELETE a testimonial by ID
+// DELETE testimonial by ID (via query param ?id=)
 export async function DELETE(req: Request) {
   try {
     const { searchParams } = new URL(req.url);
