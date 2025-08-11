@@ -1,5 +1,5 @@
-import { NextResponse } from "next/server";
-import { z } from "zod";
+import { NextRequest, NextResponse } from "next/server";
+import { z, ZodError } from "zod";
 import { db } from "@/lib/db";
 import { users } from "@/lib/db/schema";
 import { eq } from "drizzle-orm";
@@ -18,11 +18,14 @@ const changePasswordSchema = z.object({
   newPassword: z.string().min(6, "New password must be at least 6 characters"),
 });
 
-// GET - Fetch a specific user
+/**
+ * GET - Fetch a specific user
+ */
 export async function GET(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const [user] = await db
       .select({
@@ -33,7 +36,7 @@ export async function GET(
         createdAt: users.createdAt,
       })
       .from(users)
-      .where(eq(users.id, params.id));
+      .where(eq(users.id, id));
 
     if (!user) {
       return NextResponse.json(
@@ -52,20 +55,22 @@ export async function GET(
   }
 }
 
-// PATCH - Update user details
+/**
+ * PATCH - Update user details
+ */
 export async function PATCH(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const body = await req.json();
     const data = updateUserSchema.parse(body);
 
-    // Check if user exists
     const [existingUser] = await db
       .select()
       .from(users)
-      .where(eq(users.id, params.id));
+      .where(eq(users.id, id));
     if (!existingUser) {
       return NextResponse.json(
         { success: false, error: "User not found" },
@@ -73,7 +78,6 @@ export async function PATCH(
       );
     }
 
-    // If email is being changed, check if it's already in use
     if (data.email && data.email !== existingUser.email) {
       const [emailExists] = await db
         .select()
@@ -87,11 +91,10 @@ export async function PATCH(
       }
     }
 
-    // Update user
     const [updatedUser] = await db
       .update(users)
       .set(data)
-      .where(eq(users.id, params.id))
+      .where(eq(users.id, id))
       .returning({
         id: users.id,
         name: users.name,
@@ -102,13 +105,12 @@ export async function PATCH(
 
     return NextResponse.json({ success: true, user: updatedUser });
   } catch (error) {
-    if (error instanceof z.ZodError) {
+    if (error instanceof ZodError) {
       return NextResponse.json(
-        { success: false, errors: error },
+        { success: false, errors: error.format() },
         { status: 400 }
       );
     }
-
     console.error("Error updating user:", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
@@ -117,17 +119,19 @@ export async function PATCH(
   }
 }
 
-// PUT - Change password
+/**
+ * PUT - Change user password
+ */
 export async function PUT(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
     const body = await req.json();
     const { currentPassword, newPassword } = changePasswordSchema.parse(body);
 
-    // Check if user exists
-    const [user] = await db.select().from(users).where(eq(users.id, params.id));
+    const [user] = await db.select().from(users).where(eq(users.id, id));
     if (!user) {
       return NextResponse.json(
         { success: false, error: "User not found" },
@@ -135,7 +139,6 @@ export async function PUT(
       );
     }
 
-    // Verify current password
     const isPasswordValid = await verifyPassword(
       currentPassword,
       user.password
@@ -147,24 +150,21 @@ export async function PUT(
       );
     }
 
-    // Hash new password
     const hashedPassword = await hashPassword(newPassword);
 
-    // Update password
     await db
       .update(users)
       .set({ password: hashedPassword })
-      .where(eq(users.id, params.id));
+      .where(eq(users.id, id));
 
     return NextResponse.json({ success: true });
   } catch (error) {
-    if (error instanceof z.ZodError) {
+    if (error instanceof ZodError) {
       return NextResponse.json(
-        { success: false, errors: error },
+        { success: false, errors: error.format() },
         { status: 400 }
       );
     }
-
     console.error("Error changing password:", error);
     return NextResponse.json(
       { success: false, error: "Internal server error" },
@@ -173,14 +173,16 @@ export async function PUT(
   }
 }
 
-// DELETE - Delete a user
+/**
+ * DELETE - Delete a user
+ */
 export async function DELETE(
-  req: Request,
-  { params }: { params: { id: string } }
+  req: NextRequest,
+  { params }: { params: Promise<{ id: string }> }
 ) {
+  const { id } = await params;
   try {
-    // Check if user exists
-    const [user] = await db.select().from(users).where(eq(users.id, params.id));
+    const [user] = await db.select().from(users).where(eq(users.id, id));
     if (!user) {
       return NextResponse.json(
         { success: false, error: "User not found" },
@@ -188,8 +190,7 @@ export async function DELETE(
       );
     }
 
-    // Delete user
-    await db.delete(users).where(eq(users.id, params.id));
+    await db.delete(users).where(eq(users.id, id));
 
     return NextResponse.json({ success: true });
   } catch (error) {
