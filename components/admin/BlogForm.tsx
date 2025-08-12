@@ -633,7 +633,7 @@ export default function BlogForm({ onClose, initialData }: BlogFormProps) {
                 )}
               />
 
-              <FormField
+              {/* <FormField
                 control={form.control}
                 name="slug"
                 render={({ field }) => (
@@ -645,7 +645,7 @@ export default function BlogForm({ onClose, initialData }: BlogFormProps) {
                     <FormMessage />
                   </FormItem>
                 )}
-              />
+              /> */}
 
               <FormField
                 control={form.control}
@@ -669,20 +669,6 @@ export default function BlogForm({ onClose, initialData }: BlogFormProps) {
                     <FormLabel>Excerpt</FormLabel>
                     <FormControl>
                       <Input {...field} placeholder="Enter blog excerpt" />
-                    </FormControl>
-                    <FormMessage />
-                  </FormItem>
-                )}
-              />
-
-              <FormField
-                control={form.control}
-                name="heading"
-                render={({ field }) => (
-                  <FormItem>
-                    <FormLabel>Heading</FormLabel>
-                    <FormControl>
-                      <Input {...field} placeholder="Enter blog heading" />
                     </FormControl>
                     <FormMessage />
                   </FormItem>
